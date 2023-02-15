@@ -3,14 +3,15 @@ import {
   increaseCounter,
   decreaseCounter,
 } from "../redux/Counter/counter.actions"
-import { reduxForm } from "redux-form"
+import { reduxForm, change } from "redux-form"
+import { bindActionCreators } from "redux";
 
 class App extends Component {
   render() {
     const {
       fields: { firstName, lastName },
       increaseCounter, decreaseCounter,
-      count
+      count, formActions
     } = this.props;
     return (
       <div>
@@ -24,11 +25,12 @@ class App extends Component {
         </div>
         <div>Count: {count}</div>
         <button onClick={() => {
-          console.log('call came to me ~')
           increaseCounter()
-          console.log('Fuckkkk')
         }}>
           Increase Count Form
+        </button>
+        <button onClick={() => formActions.change("App Form", "randomField", count)}>
+          Update random field
         </button>
         <button onClick={() => decreaseCounter()}>
           Decrease Count Form
@@ -48,13 +50,14 @@ const mapDispatchToProps = (dispatch) => {
   return {
     increaseCounter: () => dispatch(increaseCounter()),
     decreaseCounter: () => dispatch(decreaseCounter()),
+    formActions: bindActionCreators({change}, dispatch),
   };
 };
 
 const appForm = reduxForm(
   {
     form: "App Form",
-    fields: ["firstName", "lastName"],
+    fields: ["firstName", "lastName", "randomField"],
   },
   mapStateToProps,
   mapDispatchToProps
