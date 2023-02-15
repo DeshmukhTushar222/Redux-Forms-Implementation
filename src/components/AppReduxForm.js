@@ -1,9 +1,8 @@
 import React, { Component } from "react"
-import "./App.css"
 import {
   increaseCounter,
   decreaseCounter,
-} from "./redux/Counter/counter.actions"
+} from "../redux/Counter/counter.actions"
 import { reduxForm } from "redux-form"
 
 class App extends Component {

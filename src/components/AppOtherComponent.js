@@ -1,14 +1,13 @@
 import React from "react"
-import "./App.css"
 import { connect } from "react-redux"
 import {
   increaseCounter,
   decreaseCounter,
-} from "./redux/Counter/counter.actions"
+} from "../redux/Counter/counter.actions"
 
 function App(props) {
   return (
-    <div className="App">
+    <div>
       <div>Count: {props.count}</div>
 
       <button onClick={() => props.increaseCounter()}>Increase Count</button>

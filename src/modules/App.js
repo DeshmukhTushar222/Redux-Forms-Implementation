@@ -1,6 +1,6 @@
 import React from "react"
-import App1 from "./App1"
-import App from "./App"
+import App1 from "../components/AppOtherComponent"
+import App from "../components/AppReduxForm"
 
 function App0(props) {
   return (
